@@ -1,4 +1,1 @@
-luvv-ie-website
-===============
-
-The website for http://luvv.ie
+Ths is the website for <a href='http://luvv.ie'>LuvvieScript</a>.
