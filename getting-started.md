@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Installing And Running LuvvieScript
+title: Getting started with LuvvieScript
 tagline:  - its easy to do
 ---
 {% include JB/setup %}

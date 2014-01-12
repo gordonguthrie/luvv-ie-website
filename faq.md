@@ -1,6 +1,6 @@
 ---
 layout: page
-title: LuvvieScript
+title: LuvvieScript FAQ
 tagline:  - all you need to know
 ---
 {% include JB/setup %}
