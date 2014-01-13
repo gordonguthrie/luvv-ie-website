@@ -78,6 +78,19 @@ The messages themselves will normalise events:
     msg_from_server
     msg_from_other_web_worker
 
+The models that are programmed will operate on recursive records something like:
+
+```erlang
+-record(tag, {
+              type                      :: html()| pseudo_html(),
+              id            = get_id()  :: opaque(),
+              class         = []        :: [strings()],
+              subscriptions = []        :: [dom_events()| pseudo_events()],
+              attrs         = []        :: list(),
+              inner         = []        :: [#tag{}]
+             }).
+```
+
 The other components provide all the *-ilities*:
 * reliability
 * cross-browser compatibility
@@ -90,3 +103,39 @@ These are shown below:
 The ***Mailbox And VM*** is runs the inter-process mailbox. The actual job of rendering the page is handed off to the page rendering code. The intention is that the majority of the code in this part will be well tested javascript libraries with a message passing wrapper.
 
 The browser will ***not*** be considered part of the server-side cluster - but rather something more losely connected - you could think of it as a bit like a C Port - you can communicate with it by sending and receiving messages as if it were a full node - but you can't do RPC calls to it. There will be a server side cowboy handler implemented as part of LuvvieScript
+
+The run-time will be configured using Erlang attributes. An Erlang module has only three components:
+* a mandatory module definition
+* a set of attributes
+* function defintions (or forms)
+
+Erlang attributes are not strictly defined - there is a ***normal*** set of attributes that play conventional roles in different parts of the normal software cycle:
+
+    define    Macros                  Pre-compile Expansion
+    include                           Pre-compile Expansion
+
+    record   Syntactic Sugar          Compile Time
+    export                            Compile Time
+    spec      Limited Type Checking   Compile Time
+    type      Limited Type Checking   Compile Time
+
+    spec      Full Type Checking      Dialyzer
+    type      Full Type Checking      Dialyzer
+
+    author                            Run Time Tool Support
+    vsn                               Run Time Tool Support
+    date                              Run Time Tool Support
+
+
+We will simply stuff all our run-time and configuration needs into a new set of attributes, something like this:
+```erlang
+-dialect({luvviescript, {version, 1}}).
+-require({javascript, [_underscore, jquery]}).
+-require({luvviescript, [lists, sets]}).
+```
+
+Needless to say, all of this is subject to actual implementation.
+
+  <div class='well'>
+     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> on Twitter.</h4>
+  </div>

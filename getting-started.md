@@ -27,3 +27,7 @@ rebar ct skip_deps=true
 ```
 
 It will crash and burn (obviously, other wise the test would already be in ``test/passing/src``. But once you fix that, commit, get yer t-shirt, and move onto the next test.
+
+  <div class='well'>
+     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> on Twitter.</h4>
+  </div>

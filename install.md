@@ -57,11 +57,10 @@ Installing Non-Erlang Dependencies
 At the moment the dependencies are a bit of a guddle.
 
 You will need to install:
-
-``NodeJs``
-``npm``    (the node package manager)
-``rhino``  (I know, two javascript engines...)
-``python``
+* ``NodeJs``
+* ``npm``    (the node package manager)
+* ``rhino``  (I know, two javascript engines...)
+* ``python``
 
 (There is a json pretty printer in the toolchain which require Python)
 
