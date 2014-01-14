@@ -15,7 +15,7 @@ Erlang
 
 The first step is to define a simple Erlang module which is to be compiled to Javascript. This is in ``test/passing/src/demo.src``.
 
-The luvviescript compiler can be run in two modes ``production`` or ``debug``. In ``debug`` mode it writes out all the intermediate stages to file - whis page will take you through them.
+The LuvvieScript compiler can be run in two modes ``production`` or ``debug``. In ``debug`` mode it writes out all the intermediate stages to file - this page will take you through them.
 
 ```erlang
 -module(demo).
@@ -40,9 +40,9 @@ third() ->
     3.
 ````
 
-The problem with Erlang source is that the ``-include`` attributes haven't been processed and the code can have arbitraty whitespace in it. As we will see later this causes a problem when you are trying to generate source maps.
+The problem with Erlang source is that the ``-include`` attributes haven't been processed and the code can have arbitrary whitespace in it. As we will see later this causes a problem when you are trying to generate source maps.
 
-We solve this problem by using an intermediate output of the Erlang compiler called the ``.P`` format - this file is written to ``test/passing/debug/demo.P`` directory. That ``.P`` format file is then slightly tidied up to what is known internally as the ``dotP2`` format which is written out to ``test/psrc/demo.src``. This format is the actual Erlang that will be used to build the source maps and the javascript and wil be displayed in the browser.
+We solve this problem by using an intermediate output of the Erlang compiler called the ``.P`` format - this file is written to ``test/passing/debug/demo.P`` directory. That ``.P`` format file is then slightly tidied up to what is known internally as the ``dotP2`` format which is written out to ``test/psrc/demo.src``. This format is the actual Erlang that will be used to build the source maps and the Javascript and will be displayed in the browser.
 
 The ``psrc`` variant is:
 
@@ -71,10 +71,10 @@ third() ->
 
 This doesn't look so different from the original source. However if you where to *untidify* the original by adding additional white space in strange ways, you would see that the layout and style is *normalised*.
 
-At this point two seperate transformations are going to be applied to the source:
+At this point two separate transformations are going to be applied to the source:
 
-* a compilation to a **Core Erlang** Asbtract Syntax Tree
-* a loexical tokensing of the source
+* a compilation to a **Core Erlang** Abstract Syntax Tree
+* a lexical tokensing of the source
 
 The AST will have line information in it, but no column information (source maps need both). The lexical tokens will be transformed in a source of column information and this will be used to annotate the AST.
 
@@ -182,11 +182,11 @@ Erlang has two Abstract Syntax Trees (it might confused you, it certainly confus
                           ...
 ```
 
-This is where we hit our first Erlang/Javascript roadblock. Erlang functions are defined by a ``name/arity`` combination, eg ``somefn/3`` which means the function ``somefn`` that accepts 3 arguments. ``somefn/3`` is a different function to ``somefn/2``. In javascript there is no such thing. I can define a function as taking three arguments and then call it with 2, or 4 or 11. If I redefine it as a function taking 4 arguements I (might) silently overwrite the original definition...
+This is where we hit our first Erlang/Javascript roadblock. Erlang functions are defined by a ``name/arity`` combination, eg ``somefn/3`` which means the function ``somefn`` that accepts 3 arguments. ``somefn/3`` is a different function to ``somefn/2``. In Javascript there is no such thing. I can define a function as taking three arguments and then call it with 2, or 4 or 11. If I redefine it as a function taking 4 arguments I (might) silently overwrite the original definition...
 
 We get round this by sorting the AST to group all the functions with the same root name together - when we generate the Javascript AST we will wrap the function call with a case scaffold that will see how many arguments the function was called with and direct the call to the appropriate function body. (Whilst we are at it we also strip off the ``module_info/0`` and ``module_info/1`` export declarations). This new sorted version of the AST is written as ``passing/debug/demo.ast2`` but it is not very interesting.
 
-We now have an AST which we could transpile into Javascript - but it doesn't contain the vital column information we need to generate source maps. Source maps are used in the browser's debugger to enable the developer to debug in the orginal language (LuvvieScript would be unusable as a dom scripting language without them).
+We now have an AST which we could transpile into Javascript - but it doesn't contain the vital column information we need to generate source maps. Source maps are used in the browser's debugger to enable the developer to debug in the original language (LuvvieScript would be unusable as a dom scripting language without them).
 
 What we need to do is annotate the AST with line/col information. The second element of every record type in the AST is a list of annotations. If you look at the AST you will see some records have an annotation like ``{c_literal,[14,{file,"test/passing/src/demo.erl"}],1}}}`` what this means is that the ``literal value 1`` appears on ``line 14`` of the file ``test/passing/src/demo.erl``.
 
@@ -248,9 +248,9 @@ Each line describes a token - the tuple ``{text, "\n"}`` gives the actual text i
 
 We can now merge this line column information to make the final version of the ast ``test/passing/debug/demo.ast3`` - which is otherwise uninteresting.
 
-Finally the actual work starts, each element in the AST needs to be transiled to the Javascript AST. There are no tools to do this, we have to write the code by hand.
+Finally the actual work starts, each element in the AST needs to be transpiled to the Javascript AST. There are no tools to do this, we have to write the code by hand.
 
-The transpiled AST for ``demo.erl`` is created in the ``.jast`` format which is an otherwise uniteresting Erlang represntation of JSON. We convert that to proper json (the ``.jast2`` format) which has no formatting and is therefore unreadable by normal people. Finally we call a pretty printer on that and emit the usable JSON file ``test/passing/debug/demo.js``:
+The transpiled AST for ``demo.erl`` is created in the ``.jast`` format which is an otherwise uninteresting Erlang representation of JSON. We convert that to proper json (the ``.jast2`` format) which has no formatting and is therefore unreadable by normal people. Finally we call a pretty printer on that and emit the usable JSON file ``test/passing/debug/demo.js``:
 ```
 {
     "body": [
@@ -303,7 +303,7 @@ The transpiled AST for ``demo.erl`` is created in the ``.jast`` format which is 
                             ...
 ```
 
-Calling ``escodegen.js`` on this Javascript AST gives us our final productions, the javascript (``test/passing/js/demo.js``) file and the source map (``test/passing/js/demo.js.map``):
+Calling ``escodegen.js`` on this Javascript AST gives us our final productions, the Javascript (``test/passing/js/demo.js``) file and the source map (``test/passing/js/demo.js.map``):
 
 ```javascript
 var exports = {};
@@ -410,5 +410,5 @@ Because LuvvieScript is a strict subset of Erlang, all LuvvieScript modules will
 An Erlang test file is then called which executes the zero-arity functions in the compiled Javascript and checks that the Javascript returns the same values.
 
   <div class='well'>
-     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> on Twitter.</h4>
+     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> or <a href='http://twitter.com/gordonguthrie'>@gordonguthrie</a> on Twitter.</h4>
   </div>

@@ -14,7 +14,7 @@ Most low-impedance stacks are binary stacks with Javascript or CoffeeScript in t
 * ``NodeJs``
 * ``ClojureScript & Clojure``
 
-The mission is to make ``LuvvieScript & Erlang/OTP`` a low-impedance enviroment for developing web apps.
+The mission is to make ``LuvvieScript & Erlang/OTP`` a low-impedance environment for developing web apps.
 
 What Is LuvvieScript?
 =====================
@@ -56,12 +56,12 @@ The LuvvieScript Run-Time Environment
 =====================================
 
 The working design for the LuvvieScript run-time is shown below:
-<img src='assets/img/LuvvieScript.png' alt='LuvvieScript Schematic' />
+<img class='img-responsive' src='assets/img/LuvvieScript.png' alt='LuvvieScript Schematic' />
 
-Different components of this view can be described as *-alities* - things that are specific to a particular application (the functionality of it) and *-ilities* attributes that are held in common across all applications. In normal Erlang developement the VM, Erlang/OTP Supervision and server behaviours provide the -iliites (reliability, scalability, performability etc, etc) whereas the programmer delivers the -alities by writing (mostly) ``gen_server`` workers.
+Different components of this view can be described as *-alities* - things that are specific to a particular application (the functionality of it) and *-ilities* attributes that are held in common across all applications. In normal Erlang development the VM, Erlang/OTP Supervision and server behaviours provide the -iliites (reliability, scalability, performability etc, etc) whereas the programmer delivers the -alities by writing (mostly) ``gen_server`` workers.
 
 The LuvvieScript programmer writes the ``dom_servers`` that manipulate the ***models*** of the webpage as shown below:
-<img src='assets/img/LuvvieScript_alities.png' alt='LuvvieScript Web Page Model Schematic' />
+<img class='img-responsive' src='assets/img/LuvvieScript_alities.png' alt='LuvvieScript Web Page Model Schematic' />
 
 The intention is that the front end developer will write ``gen_server`` like code, all calls and casts:
 ```erlang
@@ -98,16 +98,16 @@ The other components provide all the *-ilities*:
 * etc, etc
 
 These are shown below:
-<img src='assets/img/LuvvieScript_ilities.png' alt='LuvvieScript Run Time Schematic' />
+<img class='img-responsive' src='assets/img/LuvvieScript_ilities.png' alt='LuvvieScript Run Time Schematic' />
 
-The ***Mailbox And VM*** is runs the inter-process mailbox. The actual job of rendering the page is handed off to the page rendering code. The intention is that the majority of the code in this part will be well tested javascript libraries with a message passing wrapper.
+The ***Mailbox And VM*** is runs the inter-process mailbox. The actual job of rendering the page is handed off to the page rendering code. The intention is that the majority of the code in this part will be well tested Javascript libraries with a message passing wrapper.
 
-The browser will ***not*** be considered part of the server-side cluster - but rather something more losely connected - you could think of it as a bit like a C Port - you can communicate with it by sending and receiving messages as if it were a full node - but you can't do RPC calls to it. There will be a server side cowboy handler implemented as part of LuvvieScript
+The browser will ***not*** be considered part of the server-side cluster - but rather something more loosely connected - you could think of it as a bit like a C Port - you can communicate with it by sending and receiving messages as if it were a full node - but you can't do RPC calls to it. There will be a server side cowboy handler implemented as part of LuvvieScript
 
 The run-time will be configured using Erlang attributes. An Erlang module has only three components:
 * a mandatory module definition
 * a set of attributes
-* function defintions (or forms)
+* function definitions (or forms)
 
 Erlang attributes are not strictly defined - there is a ***normal*** set of attributes that play conventional roles in different parts of the normal software cycle:
 
@@ -137,5 +137,5 @@ We will simply stuff all our run-time and configuration needs into a new set of 
 Needless to say, all of this is subject to actual implementation.
 
   <div class='well'>
-     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> on Twitter.</h4>
+     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> or <a href='http://twitter.com/gordonguthrie'>@gordonguthrie</a> on Twitter.</h4>
   </div>
