@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Installing And Running LuvvieScript
-tagline:  - its easy to do
+tagline:  - its quick and easy to do
 ---
 {% include JB/setup %}
 
@@ -10,7 +10,7 @@ Installing LuvvieScript
 
 LuvvieScript is installed from github as so:
 
-``git clone git@github.com:/hypernumbers/LuvvieScript.git``
+``git clone https://github.com/hypernumbers/LuvvieScript.git``
 
 Having installed it you need to pull down its dependencies by running the rebar command in the root directory where you have cloned it:
 ```
