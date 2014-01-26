@@ -1,7 +1,7 @@
 ---
 layout: widepage
-title: LuvvieScript
-tagline:  - help you contribute
+title: The LuvvieScript Toolchain
+tagline:  - how it all works
 ---
 {% include JB/setup %}
 
@@ -250,7 +250,7 @@ We can now merge this line column information to make the final version of the a
 
 Finally the actual work starts, each element in the AST needs to be transpiled to the Javascript AST. There are no tools to do this, we have to write the code by hand.
 
-The transpiled AST for ``demo.erl`` is created in the ``.jast`` format which is an otherwise uninteresting Erlang representation of JSON. We convert that to proper json (the ``.jast2`` format) which has no formatting and is therefore unreadable by normal people. Finally we call a pretty printer on that and emit the usable JSON file ``test/passing/debug/demo.js``:
+The transpiled AST for ``demo.erl`` is created in the ``.js_ast`` format which is an otherwise uninteresting Erlang representation of JSON. We convert that to proper json (the ``.js_ast2`` format) which has no formatting and is therefore unreadable by normal people. Finally we call a pretty printer on that and emit the usable JSON file ``test/passing/debug/demo.js``:
 ```
 {
     "body": [
@@ -409,6 +409,3 @@ Because LuvvieScript is a strict subset of Erlang, all LuvvieScript modules will
 
 An Erlang test file is then called which executes the zero-arity functions in the compiled Javascript and checks that the Javascript returns the same values.
 
-  <div class='well'>
-     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> or <a href='http://twitter.com/gordonguthrie'>@gordonguthrie</a> on Twitter.</h4>
-  </div>

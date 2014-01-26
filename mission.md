@@ -135,7 +135,3 @@ We will simply stuff all our run-time and configuration needs into a new set of 
 ```
 
 Needless to say, all of this is subject to actual implementation.
-
-  <div class='well'>
-     <h4 class='text-info'>If you have read this far you should follow <a href='http://twitter.com/luvviescript'>@LuvvieScript</a> or <a href='http://twitter.com/gordonguthrie'>@gordonguthrie</a> on Twitter.</h4>
-  </div>

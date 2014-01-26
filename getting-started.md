@@ -16,7 +16,7 @@ Then got into ``test/not_passing/src/`` and have a good nosey around. Find a tes
 
 Fire up browser and point it to the online Javascript parser <a href="http://esprima.org/demo/parse">esprima</a>. Type in the Javascript you think you will need to compile to and that will give you a target Javascript AST.
 
-You can use the erlang module ``test_utils.erl`` to help you make a unit test in ``to_jast.erl`` for that.
+You can use the erlang module ``test_utils.erl`` to help you make a unit test in ``to_js_ast.erl`` for that.
 
 Then it is a matter of making and running the tests:
 ```
