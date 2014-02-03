@@ -35,7 +35,7 @@ Client Side Operating Environment
 The client-side of a web application has the following characteristics:
 
 * low concurrency (approx 9 units of concurrency)
-* heavy-weight currency by Web Workers
+* heavy-weight concurrency by Web Workers
 * no shared code between concurrent processes
 * code change by page refresh
 * little supervision
@@ -135,3 +135,5 @@ We will simply stuff all our run-time and configuration needs into a new set of 
 ```
 
 Needless to say, all of this is subject to actual implementation.
+
+Let me know what you think on Twitter.<a href='https://twitter.com/share' class='twitter-share-button' data-lang='en' data-text='what you need to do is...'>share it</a>
