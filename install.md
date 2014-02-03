@@ -48,7 +48,7 @@ LuvvieScript is installed from github as so:
 Having installed it you need to pull down its dependencies by running the rebar command in the root directory where you have cloned it:
 ```
 cd luvviescript/
-rebar get_deps
+rebar get-deps
 ```
 
 Once the dependencies are pulled down we are ready to start compiling.
