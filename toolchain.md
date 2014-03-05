@@ -409,3 +409,4 @@ Because LuvvieScript is a strict subset of Erlang, all LuvvieScript modules will
 
 An Erlang test file is then called which executes the zero-arity functions in the compiled Javascript and checks that the Javascript returns the same values.
 
+If you thought this was interesting why not spread the word. <a href='https://twitter.com/share' class='twitter-share-button' data-lang='en' data-text='interesting article on writing an Erlang-to-javascript compiler'>share it</a>

@@ -5,9 +5,12 @@ tagline:  - you need a special set of tools for transpiling
 ---
 {% include JB/setup %}
 
-### So You're Writing Your Own Transpile-To-Javascript Language?
+<div class='jumbotron'>
+<h1>So You're Writing Your Own Transpile-To-Javascript Language?</h1>
+<h2 class='text-info'>Are you mad?</h2>
+</div>
 
-Or maybe you are just thinking about it, but writing transpilers requires a few specialist tools. Elsewhere I talk about the <a href='http://luvv.ie/toolchain.html'>toolchain</a> in LuvvieScript in great detail, but here I will talk about some of the tools I use to build and test that toolchain.
+Or maybe you are just thinking about it, but writing transpilers requires a few specialist tools. Elsewhere I talk about the <a href='/toolchain.html'>toolchain</a> in LuvvieScript in great detail, but here I will talk about some of the tools I use to build and test that toolchain.
 
 Lets define terms first - what do I mean by transpiling? We all know what compiling is - taking a high-level format (a programme in a human readable language, like ``Ruby`` or ``C`` or the mighty ``Fortran``) doing some monkey business on it and outputting a form of that programme in a lower-level (maybe ``.elf`` or ``Java Byte Code`` or ``IRL``) which a computer can run.
 
@@ -118,8 +121,8 @@ The tool shows one of the typical hard-to-spot-by-inspection bugs - returning an
 
 That's it folks, a quick run through of the day-to-day work of developing a ***something-to-javascript*** transpiler.
 
-If you are interested in ***this*** Erlang-to-javascript transpiler you can read about the <a href='http://luvv.ie/toolchain.html'>toolchain</a> and <a href='http://luvv.ie/mission.html'>mission</a> and, mebbies, <a href='http://luvv.ie/install.html'>install</a> it and <a href='http://luvv.ie/getting-started.html'>get started</a>.
+If you are interested in ***this*** Erlang-to-javascript transpiler you can read about the <a href='/toolchain.html'>toolchain</a> and <a href='/mission.html'>mission</a> and, mebbies, <a href='/install.html'>install</a> it and <a href='/getting-started.html'>get started</a>.
 
 Toodle-pip!
 
-
+If you think this would be useful to other people please spread the word on Twitter.<a href='https://twitter.com/share' class='twitter-share-button' data-lang='en' data-text='Cool tips for building your own transpile-to-javascript language'>share it</a>
